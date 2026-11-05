@@ -1,6 +1,6 @@
 {
   "name": "my-desk-sync",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "My Desk Sync — an Obsidian community plugin that syncs knowledge notes with My Desk.",
   "main": "main.js",
   "scripts": {

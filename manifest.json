@@ -1,10 +1,10 @@
 {
   "id": "my-desk-sync",
   "name": "My Desk Sync",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "minAppVersion": "1.6.6",
   "description": "Sync your knowledge notes between My Desk and your vault — no GitHub repo or access tokens. Requires a My Desk account with a Library subscription; installation and use are free.",
   "author": "My Desk",
-  "authorUrl": "https://my-desk-snowy.vercel.app",
+  "authorUrl": "https://mydesk.thebookshift.com",
   "isDesktopOnly": false
 }

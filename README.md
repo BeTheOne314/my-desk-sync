@@ -1,7 +1,7 @@
 # My Desk Sync
 
 An Obsidian plugin that syncs your knowledge notes between
-[My Desk](https://my-desk-snowy.vercel.app) and your vault — **directly**, with no
+[My Desk](https://mydesk.thebookshift.com) and your vault — **directly**, with no
 GitHub repository and no personal access tokens to juggle.
 
 Notes settled on your desk flow into your vault as Markdown you own; edits you make in

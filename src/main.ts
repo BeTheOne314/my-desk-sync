@@ -2,6 +2,7 @@ import { App, Notice, Plugin, PluginSettingTab, Setting, TFile, TFolder } from "
 
 import { ApiError, PlannerApi } from "./api";
 import { hashContent, parseNote, serializeNote, type Note } from "./format";
+import { HOME_PLANNER_URL, migratePlannerUrl } from "./planner-url";
 import { planSync, type Baseline, type LocalNote } from "./sync";
 
 // My Desk Sync — 옵시디언 vault와 My Desk를 GitHub 없이 직접 잇는 플러그인.
@@ -20,7 +21,7 @@ interface MyDeskSyncSettings {
 }
 
 const DEFAULT_SETTINGS: MyDeskSyncSettings = {
-  plannerUrl: "https://my-desk-snowy.vercel.app",
+  plannerUrl: HOME_PLANNER_URL,
   token: "",
   folder: "10_WIKI",
   intervalMinutes: 15,
@@ -61,6 +62,8 @@ export default class MyDeskSyncPlugin extends Plugin {
 
   async loadSettings(): Promise<void> {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    // 예전 기본 주소를 저장해 둔 설치본은 집(.com)으로 옮긴다. 다음 저장 때 디스크에도 남는다.
+    this.settings.plannerUrl = migratePlannerUrl(this.settings.plannerUrl);
   }
 
   async saveSettings(): Promise<void> {
@@ -268,7 +271,7 @@ class MyDeskSyncSettingTab extends PluginSettingTab {
       .setDesc("보통 그대로 두면 됩니다. 자가 호스팅일 때만 바꾸세요.")
       .addText((text) =>
         text
-          .setPlaceholder("https://my-desk-snowy.vercel.app")
+          .setPlaceholder(HOME_PLANNER_URL)
           .setValue(this.plugin.settings.plannerUrl)
           .onChange(async (value) => {
             this.plugin.settings.plannerUrl = value.trim();
